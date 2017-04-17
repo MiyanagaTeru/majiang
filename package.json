@@ -1,5 +1,5 @@
 {
-  "name": "learn50",
+  "name": "majiang",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MiyanagaTeru/qian.git"
+    "url": "git+https://github.com/MiyanagaTeru/majiang.git"
   },
   "author": "Teru",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MiyanagaTeru/Learn50/issues"
+    "url": "https://github.com/MiyanagaTeru/majiang/issues"
   },
-  "homepage": "https://github.com/MiyanagaTeru/Learn50#readme",
+  "homepage": "https://github.com/MiyanagaTeru/majiang#readme",
   "dependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "babel-polyfill": "^6.3.14",
