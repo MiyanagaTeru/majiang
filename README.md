@@ -1,3 +1,3 @@
-# redux_boilerplate
+# majiang
 
-including express server and hot reload.
+calculate Japaneses mahjong points
