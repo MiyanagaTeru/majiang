@@ -1,15 +1,21 @@
-const results = (status={}, action) => {
+import calculating from '../utils/calculating'
+
+const initialState = {
+	title: '',
+	yizhong: [],
+	points: 0
+}
+
+const results = (state=initialState, action) => {
 	switch (action.type) {
 		case 'CALC_POINTS':
-			return {
-				yizhong: ['国士无双'],
-				fushu: '-',
-				fanshu: '-',
-				title: '役满',
-				points: '32000'
-			}
+			return calculating(action.paixing)
+			break
+		case 'RESET_FORM':
+			return initialState
+			break
 		default:
-			return status;
+			return state;
 	}
 }
 

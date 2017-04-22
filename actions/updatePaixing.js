@@ -1,6 +1,7 @@
-const updatePaixing = (mpsz, value) => ({
+const updatePaixing = (key, value) => ({
 	type: 'UPDATE_PAIXING',
-	[mpsz]: value
+	key,
+	value
 })
 
 export default updatePaixing

@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import actions from '../actions'
 
 const Result = ({results}) =>
-	results.points ?
+	!results.zhahu ?
 	<div>
 		<div>
 			<ul>
@@ -15,11 +15,16 @@ const Result = ({results}) =>
 				}
 			</ul>
 		</div>
-		<div>{`${results.fushu}符${results.fanshu}番`}</div>
+
+		<div>
+			<span>{results.fushu && `${results.fushu}符` }</span>
+			<span>{results.fanshu && `${results.fanshu}翻`}</span>
+		</div>
+
 		<div>{results.title}</div>
-		<div>{`${results.points}点`}</div>
+		{ results.dianshu && <div>{`${results.dianshu}点`}</div> }
 	</div> :
-	<div></div>
+	<div>{results.title}</div>
 
 const mapStateToProps = state => ({
 	results: state.results

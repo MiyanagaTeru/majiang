@@ -1,5 +1,6 @@
-const calcPoints = () => ({
-	type: 'CALC_POINTS'
+const calcPoints = paixing => ({
+	type: 'CALC_POINTS',
+	paixing
 })
 
 export default calcPoints
