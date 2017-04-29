@@ -2,8 +2,6 @@ import React from 'react'
 
 import only from '../utils/typeRestrict'
 
-import styles from '../css/textInput.css'
-
 const TextInput = ({
 	labelText,
 	inputName,
@@ -11,10 +9,10 @@ const TextInput = ({
 	typeRestrict,
 	actions
 }) =>
-	<div className='d-inline-block col-6'>
+	<div className='d-inline-block col-6 col-sm-4'>
 		<label className='row'>
-			<span className='col-4 col-form-label'>{labelText}</span>
-			<div className='col-8'>
+			<span className='col-2 col-form-label px-0 text-left'>{labelText}</span>
+			<div className='col-10 px-0'>
 				<input type="text" className='form-control' name={`paixing${inputName}`} value={inputValue || ''} onChange={e => {
 					if(!only(typeRestrict, e.target.value)) {
 						return false

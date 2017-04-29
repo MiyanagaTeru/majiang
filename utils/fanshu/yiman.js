@@ -41,6 +41,19 @@ const yiman = (paixing, zPaixing) => {
 		}
 	}
 
+	// 不是诈和吧？
+	if (
+		zPaixing.all.find(mianzi => mianzi.type==='zhahu') ||
+		zPaixing.all.length < 5 ||
+		!zPaixing.all.find(mianzi => mianzi.type==='quetou') ||
+		(zPaixing.all.filter(mianzi => mianzi.type === 'quetou').length !== 7 && zPaixing.all.filter(mianzi => mianzi.type === 'quetou').length !==1)
+	) {
+		return {
+			zhahu: true,
+			title: '诈和啦'
+		}
+	}
+
 	// 大三元
 	// 拥有三种三元牌，且每种都是刻子或杠子
 	if (
@@ -86,8 +99,9 @@ const yiman = (paixing, zPaixing) => {
 
 	// 清老头
 	const findQingLaotou = zPaixing =>
-		zPaixing.all.filter(obj => obj.type !== 'shunzi').reduce((pre, cur) =>
-			['1', '9'].indexOf(cur.value.split('')[0]) > -1
+		zPaixing.all.filter(obj => obj.type !== 'shunzi').reduce((pre, cur) => {
+			return pre && ['1', '9'].indexOf(cur.value.split('')[0]) > -1
+		}
 		, true)
 
 

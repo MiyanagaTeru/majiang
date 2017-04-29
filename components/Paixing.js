@@ -58,19 +58,22 @@ const Paixing = ({paixing, eStatus, actions, calcPoints}) =>
 
 		<fieldset>
 			<CheckInput labelText='立直' inputName='lizhi' inputValue={paixing.lizhi} actions={actions} />
+			<CheckInput labelText='w立直' inputName='wlizhi' inputValue={paixing.wlizhi} actions={actions} />
 			<CheckInput labelText='一发' inputName='yifa' inputValue={paixing.yifa} actions={actions} />
 			<CheckInput labelText='自摸' inputName='zimo' inputValue={paixing.zimo} actions={actions} />
 			<CheckInput labelText='海底捞月' inputName='haidi' inputValue={paixing.haidi} actions={actions} />
 			<CheckInput labelText='河底捞鱼' inputName='hedi' inputValue={paixing.hedi} actions={actions} />
 			<CheckInput labelText='岭上开花' inputName='lingshang' inputValue={paixing.lingshang} actions={actions} />
 			<CheckInput labelText='抢杠' inputName='qianggang' inputValue={paixing.qianggang} actions={actions} />
-			<RadioInput labelText='场风' inputName='changfeng' inputValues={['d', 'n', 'x', 'b']} inputLabels={['东 ','南 ','西 ','北 ']} actions={actions} />
-			<RadioInput labelText='自风' inputName='zifeng' inputValues={['d', 'n', 'x', 'b']} inputLabels={['东 ','南 ','西 ','北 ']} actions={actions} />
-			<TextInput labelText='本场' inputName='benchang' inputValue={paixing.benchang} typeRestrict='number' actions={actions}/>
+			<div>
+				<RadioInput labelText='场风' inputName='changfeng' inputValues={['d', 'n', 'x', 'b']} inputLabels={['东 ','南 ','西 ','北 ']} actions={actions} paixing={paixing}/>
+				<RadioInput labelText='自风' inputName='zifeng' inputValues={['d', 'n', 'x', 'b']} inputLabels={['东 ','南 ','西 ','北 ']} actions={actions} paixing={paixing}/>
+				<TextInput labelText='本场' inputName='benchang' inputValue={paixing.benchang} typeRestrict='number' actions={actions}/>
+			</div>
 		</fieldset>
 
 		<button
-			className='btn btn-primary'
+			className='btn btn-primary col-3 offset-2 mt-3'
 			onClick={
 				e => {
 					e.preventDefault()
@@ -80,7 +83,7 @@ const Paixing = ({paixing, eStatus, actions, calcPoints}) =>
 			计算
 		</button>
 		<button
-			className='btn btn-secondary'
+			className='btn btn-secondary col-3 offset-2 mt-3'
 			onClick={
 				e => {
 					e.preventDefault()

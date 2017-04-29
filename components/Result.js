@@ -2,18 +2,19 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import actions from '../actions'
+import styles from '../css/app.css'
 
 const Result = ({results}) =>
 	!results.zhahu ?
-	<div>
+	<div className={`${styles.results} text-center my-4`}>
 		<div>
-			<ul>
+			<div className='mb-3'>
 				{
 					results.yizhong.map((yi, index)=>
-						<li key={index}>{yi}</li>
+						<div key={index} className='text-center'>{yi}</div>
 					)
 				}
-			</ul>
+			</div>
 		</div>
 
 		<div>
@@ -21,10 +22,10 @@ const Result = ({results}) =>
 			<span>{results.fanshu && `${results.fanshu}翻`}</span>
 		</div>
 
-		<div>{results.title}</div>
+		<div className='text-center'>{results.title}</div>
 		{ results.dianshu && <div>{`${results.dianshu}点`}</div> }
 	</div> :
-	<div>{results.title}</div>
+	<div className={`${styles.results} text-center my-4`}>{results.title}</div>
 
 const mapStateToProps = state => ({
 	results: state.results

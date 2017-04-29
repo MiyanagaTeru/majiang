@@ -2,6 +2,7 @@ import zhengli from './zhengli'
 import yiman from './fanshu/yiman'
 import yifan from './fanshu/yifan'
 import liangfan from './fanshu/liangfan'
+import sanfan from './fanshu/sanfan'
 import calcFushu from './calcFushu.js'
 import calcDianshu from './calcDianshu'
 
@@ -22,21 +23,7 @@ const calculating = paixing => {
 
 	// 先整理一下
 	const zPaixing = zhengli(paixing)
-	console.log(zPaixing)
 
-
-
-	// 不是诈和吧？ TODO: 加入国士无双判定
-	if (
-		zPaixing.all.find(mianzi => mianzi.type==='zhahu') ||
-		zPaixing.all.length < 5 ||
-		!zPaixing.all.find(mianzi => mianzi.type==='quetou')
-	) {
-		return {
-			zhahu: true,
-			title: '诈和啦'
-		}
-	}
 	// 役满
 	if (yiman(paixing, zPaixing)) {
 		return yiman(paixing, zPaixing)
@@ -45,13 +32,25 @@ const calculating = paixing => {
 	let fanshu = 0
 	let fushu = 0
 	let yizhong = []
-	// 一翻
-	yizhong = [...yizhong, ...yifan(paixing, zPaixing).yizhong, ...liangfan(paixing, zPaixing).yizhong]
+
+	yizhong = [
+		...yizhong,
+		...yifan(paixing, zPaixing).yizhong,
+		...liangfan(paixing, zPaixing).yizhong,
+		...sanfan(paixing, zPaixing).yizhong
+	]
+
 	fanshu += +yifan(paixing, zPaixing).fanshu
 	fanshu += +liangfan(paixing, zPaixing).fanshu
+	fanshu += +sanfan(paixing, zPaixing).fanshu
 
+	//高点法
+	if (yizhong.indexOf('二杯口') > -1) {
+		yizhong = yizhong.filter(obj => obj !== '一杯口' && obj !=='七对子')
+		fanshu -= 1
+	}
 
-	fushu = calcFushu(paixing, zPaixing, yizhong)
+	fushu = calcFushu(paixing, zPaixing, yizhong, fanshu)
 
 	const dianResult = calcDianshu(paixing, fanshu, fushu)
 

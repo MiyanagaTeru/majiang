@@ -3,4 +3,8 @@ body {
 	padding: 20px;
 	max-width: 768px;
 	margin: 0 auto;
+	background-color: #eee;
+}
+.results {
+	font-size: 25px;
 }

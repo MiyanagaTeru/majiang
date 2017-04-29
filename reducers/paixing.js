@@ -17,9 +17,23 @@ const initialState = {
 const paixing = (state=initialState, action) => {
 	switch (action.type) {
 		case 'UPDATE_PAIXING':
-			return {
-				...state,
-				[action.key]: action.value
+			if (action.key === 'fulu' && action.value === false) {
+				return {
+					...state,
+					[action.key]: action.value,
+					...{
+						fm: '',
+						fp: '',
+						fs: '',
+						ff: '',
+						fz: ''
+					}
+				}
+			} else {
+				return {
+					...state,
+					[action.key]: action.value
+				}
 			}
 		case 'RESET_FORM':
 			return initialState

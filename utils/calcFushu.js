@@ -1,4 +1,4 @@
-const calcFushu = (paixing, zPaixing, yizhong) => {
+const calcFushu = (paixing, zPaixing, yizhong, fanshu) => {
 	let fushu = 20
 	// 门清荣和
 	if (!paixing.fulu && !paixing.zimo) {
@@ -28,6 +28,10 @@ const calcFushu = (paixing, zPaixing, yizhong) => {
 	// 特殊
 	if (yizhong.find(obj => obj === '七对子')) {
 		return 25
+	}
+	// 副露平和
+	if (fanshu === 1 && fushu === 20) {
+		return 30
 	}
 	return Math.ceil(fushu/10)*10
 }
